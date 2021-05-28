@@ -10,12 +10,27 @@ ddcctl can control the monitor inputs. I'm using automator to write a script for
 Displayplacer is piggybacked onto Monitor Inputs DP and Monitor Inputs HDMI so that the arrangement is set when switching.
 
 The automator shortcuts are kept in /Users/<user>/Library/Services which makes them available to set keyboard shortcuts on. Example paths from my Mac. 
+```
 /Users/jason/Library/Services/Monitor 1 Input DP.workflow  
 /Users/jason/Library/Services/Monitor 1 Input HDMI.workflow  
 /Users/jason/Library/Services/Monitor 2 Input DP.workflow  
 /Users/jason/Library/Services/Monitor 2 Input HDMI.workflow  
 /Users/jason/Library/Services/Monitor Inputs DP.workflow  
 /Users/jason/Library/Services/Monitor Inputs HDMI.workflow  
+```
+  
+## Setup
+
+1. To install DDCCTL, download the binary and put it in `/usr/local/bin`.
+2. To install displayplacer, run `brew tap jakehilborn/jakehilborn && brew install displayplacer`.
+3. Download the workflows from this repo and put them in `/Users/<user>/Library/Services`.
+4. Setup monitor arrangement in `Settings > Displays > Arrangement`.
+5. In a terminal, run `displayplacer list`. This outputs a bunch of info but the last line is the command for your current arrangement. Copy it.
+6. Open the Monitor Inputs DP.workflow in Automator and paste this command over the one there. The same monitor gets a different id on each computer connected to it so it has to be updated from what is checked in.
+7. Open the Monitor Inputs HDMI.workflow in Automator and paste the command over the one there.
+8. Open `Settings > Keyboard > Shortcuts` and scroll down to `General`. Each workflow should appear there. Assign keyboard shortcuts for each.
+9. Optional: Open the individual monitor workflows and add the displayplacer command there as well. I haven't checked it in that way because I generally switch both monitors at once.
+
 
 ## Automator Script for Monitor Inputs HDMI
 ![image](https://user-images.githubusercontent.com/7939225/119765204-071eb680-be70-11eb-8bfd-30c25937f075.png)
